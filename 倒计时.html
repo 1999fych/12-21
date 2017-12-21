@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+	<p id="inp"></p>
+	<button onclick="go()">开始</button>
+	<button onclick="stop()">停止</button>
+	<button onclick="jixu()">继续</button>
+	<script>
+	    var time=60;
+	    var div=document.getElementById('inp');
+	    var stopState = false;
+	    inp.innerHTML="00:00"+':'+time;
+	    function go(){
+	        timeout();
+	    }
+	    function timeout(){
+	        if(time<0){
+	            time=61;
+	            return;
+	        }
+	        inp.innerHTML="00:00"+':'+time;
+	        setTimeout(function(){
+	            time--;
+	            div.innerText = time;
+	            if(time!==0 && !stopState){
+	                timeout();
+	            }
+	        },1000);
+	    }
+	    function jixu(){
+	        time = Number(document.getElementById('inp').innerText);
+	        stopState =false;
+	        timeout();
+	    }
+	    function stop(){
+	        stopState = true;
+	    }
+	</script>
+</body>
+</html>
